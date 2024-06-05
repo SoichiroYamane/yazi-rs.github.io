@@ -391,7 +391,13 @@ fi
   <TabItem value="fish" label="Fish">
 
 ```sh
-# Please raise a PR if you have a fish version
+# Change Yazi's CWD to PWD on subshell exit
+if set -q YAZI_ID
+    function _yazi_cd --on-event fish_exit
+        ya pub $YAZI_ID dds-cd --str $PWD
+    end
+end
+
 ```
 
   </TabItem>
